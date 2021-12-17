@@ -1,22 +1,23 @@
 <div class="container">
   <div class="col-xs-12 text-center">
-    <h1>Contatos</h1>
+    <h1>Usuários</h1>
   </div>
 
   <table class="table">
     <thead>
       <tr>
+        <th scope="col">Novo Usuario</th>
         <th scope="col">Nome</th>
         <th scope="col">Telefone</th>
       </tr>
     </thead>
     <tbody>
-      <% @contacts.each do |contact| %>
+      <% @user.each do |user| %>
         <tr>
-          <td><%= contact.name %></td>
-          <td><%= contact.phone %></td>
-          <td><%= link_to 'Editar', edit_contact_path(contact), class: 'btn btn-warning' %></td>
-          <td><%= link_to 'Excluir', contact_path(contact), method: :delete, class: 'btn btn-danger', data: { confirm: "Deseja mesmo excuir este contato?"} %></td>
+          <td><%= user.name %></td>
+          <td><%= user.phone %></td>
+          <td><%= link_to 'Editar', edit_user_path(user), class: 'btn btn-warning' %></td>
+          <td><%= link_to 'Excluir', user_path(user), method: :delete, class: 'btn btn-danger', data: { confirm: "Deseja mesmo excuir este usuario?"} %></td>
         </tr>
       <% end %>
     </tbody>

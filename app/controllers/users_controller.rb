@@ -15,12 +15,19 @@ class UsersController < ApplicationController
   def edit
       @user = User.find(params[:id])
       if @user.nil?
-          flash[:danger] = 'Contato não encontrado.'
+          flash[:danger] = 'Usuário não encontrado.'
           redirect_to users_path(current_user)
       end
   end
   
   def update
+        @user = User.find(params[:id])
+        if @user.update(user_params)
+            flash[:success] = 'Usuário atualizado com sucesso'
+            redirect_to users_path
+        else
+            render 'edit'
+        end
   end
   
 
@@ -37,7 +44,7 @@ class UsersController < ApplicationController
 
   private
       def user_params
-          params.require(:users).permit(:name, :phone)
+          params.require(:user).permit(:name, :phone, :user_id)
       end
 
   def get_user
