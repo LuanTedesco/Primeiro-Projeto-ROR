@@ -10,14 +10,14 @@ class ContactsController < ApplicationController
   end
 
   def create
-      @contact = Contact.new(contact_params)
-      if @contact.save!
-          flash[:success] = 'Contato criado com sucesso!'
-          redirect_to contacts_path
-      else
-          render 'new'
-      end
-  end
+    @contact = Contact.new(contact_params)
+        if @contact.save!
+            flash[:success] = 'Contato criado com sucesso!'
+        redirect_to contacts_path
+        else
+             render 'new'
+        end
+    end
 
   def edit
       @contact = Contact.find(params[:id])

@@ -10,7 +10,14 @@ class UsersController < ApplicationController
   end
 
   def create
-  end
+    @user = User.new(user_params)
+        if @user.save!
+            flash[:success] = 'Usuário criado com sucesso!'
+        redirect_to new_user_path
+        else
+            render 'new'
+        end
+    end
 
   def edit
       @user = User.find(params[:id])
@@ -22,7 +29,7 @@ class UsersController < ApplicationController
   
   def update
         @user = User.find(params[:id])
-        if @user.update(user_params)
+        if @user.update(users_params)
             flash[:success] = 'Usuário atualizado com sucesso'
             redirect_to users_path
         else
@@ -38,13 +45,13 @@ class UsersController < ApplicationController
       @user = User.find(params[:id])
   end     
 
-  def list_contacts
-      @contacts = Contact.where(user: @user)
+  def list_users
+      @users = User.where(user: @user)
   end
 
   private
       def user_params
-          params.require(:user).permit(:name, :phone, :user_id)
+          params.require(:user).permit(:name, :phone, :email, :id, :password)
       end
 
   def get_user

@@ -1,10 +1,11 @@
 <div class="container">
   <div class="col-xs-12">
-    <h1>Adicionar Novo Contato</h1>
+    <h1>Adicionar Novo Usuário</h1>
   </div>
 
   <div class="col-md-6 col-md-offset-6 col-xs-12">
-    <%= form_for @contact do |f| %>
+    <%= form_for @user do |f| %>
+
       <div class="form-group">
         <%= f.label :name %>
         <%= f.text_field :name, class: 'form-control' %>
@@ -14,12 +15,17 @@
         <%= f.label :phone %>
         <%= f.text_field :phone, class: 'form-control' %>
       </div>
+
       <div class="form-group">
-        <%= f.label :user %>
-        <%= f.select :user_id, User.all.map { |index| [index.name, index.id]},
-                                 { include_blank: 'Selecione um Usuário' },
-                                 { class: "form-control", required: true }  %>
+        <%= f.label :email %>
+        <%= f.text_field :email, class: 'form-control' %>
       </div>
+
+      <div class="form-group">
+        <%= f.label :password %>
+        <%= f.text_field :password, class: 'form-control' %>
+      </div>
+
       <div class="form-group">
         <%= f.submit 'Salvar', class: 'btn btn-primary' %>
       </div>

@@ -14,12 +14,12 @@
         <%= f.label :phone %>
         <%= f.text_field :phone, class: 'form-control' %>
       </div>
+
       <div class="form-group">
-        <%= f.label :user %>
-        <%= f.select :id, User.all.map { |index| [index.name, index.id]},
-                                 { include_blank: 'Selecione um Usuário' },
-                                 { class: "form-control", required: true }  %>
+        <%= f.label :email %>
+        <%= f.text_field :email, class: 'form-control' %>
       </div>
+
       <div class="form-group">
         <%= f.submit 'Atualizar', class: 'btn btn-primary' %>
       </div>
